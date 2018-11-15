@@ -50,6 +50,24 @@ Western Governors University
 				return $pass;
 			}
 
+			function mult_Returns($theGrades){
+				$sum = 0.00;
+				foreach ($theGrades as $grade) {
+					$sum = $sum + $grade;
+				}
+
+				$ave = $sum/sizeof($theGrades);
+				if ($ave >= 75){
+					$pass = TRUE;
+					$comment = "Passed";
+				}
+				else {
+					$pass = FALSE;
+					$comment = "Failed";
+				}
+				return array($ave, $comment);
+			}
+
 			// MAIN PROGRAM 
 
 			$myName = "Teodulfo";
@@ -65,11 +83,32 @@ Western Governors University
 			sayHello($message . _SPACER . _BOLDSTART . (string)$myAverage . _BOLDEND . _NEWLINE);
 
 			if (didYouPass((float)$myAverage)){
-				sayHello( _NEWLINE . "Remarks:" . _SPACER . _BOLDSTART . "Passed" . _BOLDEND . _NEWLINE);
+				sayHello("Remarks:" . _SPACER . _BOLDSTART . "Passed" . _BOLDEND . _NEWLINE);
 			}
 			else {
-				sayHello( _NEWLINE . "Remarks:" . _SPACER . _BOLDSTART . "Failed" . _BOLDEND . _NEWLINE);
+				sayHello("Remarks:" . _SPACER . _BOLDSTART . "Failed" . _BOLDEND . _NEWLINE);
 			}
+
+			$message = "Multiple returns";
+
+			$myResults = mult_Returns($myGrades);
+			sayHello( _NEWLINE. $message . _SPACER . _NEWLINE . _NEWLINE);			
+
+			$message = "Your grade point average is";
+			sayHello($message . _SPACER . _BOLDSTART . (string)$myResults[0] . _BOLDEND . _NEWLINE);
+			$message = "Remarks:";
+			sayHello($message . _SPACER . _BOLDSTART . (string)$myResults[1] . _BOLDEND . _NEWLINE);
+
+			$message = "Multiple returns (Using lists)";
+
+			
+			sayHello( _NEWLINE. $message . _SPACER . _NEWLINE . _NEWLINE);			
+
+			$message = "Your grade point average is";
+			list($theAverage, $theComment) = mult_Returns($myGrades);
+			sayHello($message . _SPACER . _BOLDSTART . (string)$theAverage . _BOLDEND . _NEWLINE);
+			$message = "Remarks:";
+			sayHello($message . _SPACER . _BOLDSTART . (string)$theComment . _BOLDEND . _NEWLINE);
 
 		?>
 
