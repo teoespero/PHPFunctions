@@ -26,7 +26,7 @@ Western Governors University
 			define("_ITALICSTART", "<em>");
 			define("_ITALICEND", "</em>");
 			
-			// function lists
+			// FUNCTION LIST
 
 			function sayHello($theName){
 				echo $theName;
@@ -40,17 +40,36 @@ Western Governors University
 				return ($sum/sizeof($theGrades));
 			}
 
+			function didYouPass($gpa){
+				if ($gpa >= 75){
+					$pass = TRUE;
+				}
+				else {
+					$pass = FALSE;
+				}
+				return $pass;
+			}
+
+			// MAIN PROGRAM 
+
 			$myName = "Teodulfo";
 			$message = "Hello";
 
 			$myGrades = array(80, 75, 90, 100, 87);
 			$myAverage = 0.0;
 
-			sayHello($message . _SPACER . $myName . "!" . _NEWLINE);
+			sayHello($message . _SPACER . _BOLDSTART . $myName . _BOLDEND . "!" . _NEWLINE);
 			$myAverage = getAverage($myGrades);
 
 			$message = "Your grade point average is";
 			sayHello($message . _SPACER . _BOLDSTART . (string)$myAverage . _BOLDEND . _NEWLINE);
+
+			if (didYouPass((float)$myAverage)){
+				sayHello( _NEWLINE . "Remarks:" . _SPACER . _BOLDSTART . "Passed" . _BOLDEND . _NEWLINE);
+			}
+			else {
+				sayHello( _NEWLINE . "Remarks:" . _SPACER . _BOLDSTART . "Failed" . _BOLDEND . _NEWLINE);
+			}
 
 		?>
 
