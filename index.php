@@ -46,11 +46,11 @@ Western Governors University
 			$myGrades = array(80, 75, 90, 100, 87);
 			$myAverage = 0.0;
 
-			sayHello($message . _SPACER . $myName . _NEWLINE);
+			sayHello($message . _SPACER . $myName . "!" . _NEWLINE);
 			$myAverage = getAverage($myGrades);
 
-			$message = "My grade point average is";
-			sayHello($message . _SPACER . (string)$myAverage . _NEWLINE);
+			$message = "Your grade point average is";
+			sayHello($message . _SPACER . _BOLDSTART . (string)$myAverage . _BOLDEND . _NEWLINE);
 
 		?>
 
